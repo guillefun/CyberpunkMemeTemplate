@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    </head>
+<body onload="run()">
+<section id="board">
+<form >
+    <textarea id="textCyberpunk" name="textCyberpunk" rows="4" cols="50">
+    </textarea>
+    <br><br>
+</form>
+<canvas id="myCanvas" width="700" height="400">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+</section>
+
+
+<script type="text/javascript">
+
+        function drawString(ctx, text, posX, posY, textColor, rotation, font, fontSize) {
+                var lines = text.split("\n");
+				if (!rotation) rotation = 0;
+				if (!font) font = "'serif'";
+				if (!fontSize) fontSize = 14;
+				if (!textColor) textColor = '#000000';
+              
+                ctx.save();
+		 		ctx.font =  fontSize + "px " + font;
+		 		ctx.fillStyle = textColor;
+                
+		 		ctx.translate(posX, posY);
+		 		ctx.rotate(rotation * Math.PI / 180);
+				for (i = 0; i < lines.length; i++) {
+			 		ctx.fillText(lines[i],0, i*fontSize*1.4);
+				}
+		 		ctx.restore();
+		 	}
+
+           
+    var img = new Image();
+    img.src = "img/template/template.jpg";
+    img.onload = function() {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, img.width,    img.height,     // source rectangle
+                   0, 0, canvas.width, canvas.height); // destination rectangle
+  
+}
+var canvas = document.getElementsByTagName('canvas')[0],
+
+    body = document.getElementsByTagName('body')[0], th;
+
+th = document.querySelector('#textCyberpunk');
+th.onkeyup = function() {
+    if (ctx) {
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+       ctx.drawImage(img, 0, 0, img.width,    img.height,     // source rectangle
+                   0, 0, canvas.width, canvas.height); // destination rectangle
+      drawString(ctx, th.value, 55, 115, '#00000', 0, "Roboto", 12);
+    }
+}
+if (canvas.getContext('2d')) {
+    ctx = canvas.getContext('2d');
+   drawString(ctx, th.value, 55, 115, '#00000', 0, "sans-serif", 14);
+}
+</script>
+
+</body>
+</html>

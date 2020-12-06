@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+  background-color: rgb(243, 229, 0);
+  background-image: url("../img/back.png");
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+textarea {
+  margin: auto;
+  white-space: pre-wrap;
+}
+section {
+  position: relative;
+  width: 1200px;
+  height: 700px;
+  margin: auto;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.281);
+}
+canvas {
+  position: absolute;
+  top: 35%;
+  left: 252.5px;
+  margin: -25px 0 0 -25px;
+  border: 10px solid #d5ff4d7e;
+}
+
+textarea {
+  position: absolute;
+  top: 15%;
+  left: 393px;
+  margin: -25px 0 0 -25px;
+  border: 10px solid #d5ff4d7e;
+}
